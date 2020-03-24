@@ -1,0 +1,17 @@
+{
+	"authors": [
+		"Chris Hewison"
+	],
+	"copyright": "Copyright © 2020, Chris Hewison",
+	"dependencies": {
+		"base32": "~>0.1.0",
+		"libsodiumd": "~>0.1.0",
+		"openssl": "~>2.0.1"
+	},
+	"description": "Program to create keypair, sign and verify using Ed25519 algorithm",
+	"lflags": [
+		"-lsodium"
+	],
+	"license": "proprietary",
+	"name": "signer"
+}
