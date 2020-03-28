@@ -9,7 +9,7 @@ import libsodium;
 struct SignResult
 {
     ///status code to return (0 if success)
-    int sts;    
+    int sts;
     ///hex representation of the signature and message concatenated
     string txt;
 }
@@ -45,10 +45,10 @@ private SignResult createSignature(const string message, const ubyte* sk) @trust
 {
     const ubyte[] m = textToBuf(message);
     ulong smlen;
-    // ubyte* sm = new ubyte; //TODO: Should not limit message size as in next line
-    ubyte[256] sm; // prevent range violation in crypto_sign lib call
+    ubyte[] sm = new ubyte[](m.length + SIG_BYTES); //Allocate the required memory
     const ulong mlen = m.length;
     const int res = crypto_sign(&sm[0], &smlen, &m[0], mlen, &sk[0]);
     string signature = writeHex(sm[0 .. smlen]);
+    sm = null; //Free the allocated memory
     return SignResult(res, signature);
 }

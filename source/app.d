@@ -1,8 +1,8 @@
 module app;
 
-import sign: sign, SignResult;
-import verify: verify, VerifyResult;
-import keypair: keypair, KeyPairResult;
+import sign : sign, SignResult;
+import verify : verify, VerifyResult;
+import keypair : keypair, KeyPairResult;
 
 import std.stdio;
 import std.exception;
@@ -34,7 +34,8 @@ int main(string[] args)
                 {
                     writeln(signResult.txt);
                 }
-                else {
+                else
+                {
                     writeln("Failed to sign with error status:", signResult.sts);
                 }
                 return signResult.sts;
@@ -57,7 +58,8 @@ int main(string[] args)
                 throw new Exception("Invalid program args. Read help above.");
             }
         }
-        else {
+        else
+        {
             outputHelp();
         }
     }
@@ -75,7 +77,8 @@ private void outputHelp()
     writeln("============================================");
     writeln("Options to run this Ed25519 Signer Program:-");
     writeln("============================================");
-    writeln("./signer keypair                         - create Stellar encoded Ed25519 keypair (Seed and Public key)");
+    writeln(
+            "./signer keypair                         - create Stellar encoded Ed25519 keypair (Seed and Public key)");
     writeln("./signer sign $SEED $DATA                - sign $DATA using $SEED");
     writeln("./signer verify $PUBLIC_KEY $SIGNATURE   - verify $SIGNATURE using $PUBLIC_KEY");
     writeln("============================================");

@@ -3,15 +3,14 @@ module hex;
 import std.conv;
 import std.algorithm;
 import std.format;
-import std.array: array;
-import std.range: chunks;
+import std.array : array;
+import std.range : chunks;
 
 /// Read a hex string into ubyte[]
-ubyte[] readHex(string hexString) @safe {
-    ubyte[] res = (hexString.length % 2 ? "0" ~ hexString : hexString)
-                .chunks(2)
-                .map!(twoDigits => twoDigits.parse!ubyte(16))
-                .array();
+ubyte[] readHex(string hexString) @safe
+{
+    ubyte[] res = (hexString.length % 2 ? "0" ~ hexString : hexString).chunks(2)
+        .map!(twoDigits => twoDigits.parse!ubyte(16)).array();
     return res.dup;
 }
 
@@ -22,7 +21,8 @@ unittest
 }
 
 /// Write hex string from ubyte array
-string writeHex(const ubyte[] bytes) @safe {
+string writeHex(const ubyte[] bytes) @safe
+{
     return format("%(%02X%)", bytes);
 }
 
@@ -33,7 +33,8 @@ unittest
 }
 
 /// Write hex string from ubyte array
-string hexToText(const ubyte[] bytes) @safe {
+string hexToText(const ubyte[] bytes) @safe
+{
     return to!string(bytes.map!(to!char));
 }
 
@@ -44,7 +45,8 @@ unittest
 }
 
 /// Write utf-8 string to hex
-ubyte[] textToBuf(const string txt) @safe {
+ubyte[] textToBuf(const string txt) @safe
+{
     return txt.map!(to!ubyte).array;
 }
 

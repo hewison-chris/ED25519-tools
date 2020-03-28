@@ -5,14 +5,15 @@ import stellar;
 import libsodium;
 
 /// Structure to return result to program main
-struct KeyPairResult { 
+struct KeyPairResult
+{
     ///status code to return (0 if success)
-    int sts; 
-    ///stellar forammted seedKey
-    string seedKey; 
-    ///stellar forammted publicKey
-    string publicKey; 
-    }
+    int sts;
+    ///stellar formatted seedKey
+    string seedKey;
+    ///stellar formatted publicKey
+    string publicKey;
+}
 
 /**
 Create and output Stellar-encoded, randomly generated Ed25519 keypair.
